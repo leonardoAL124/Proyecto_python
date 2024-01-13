@@ -115,7 +115,6 @@
     </div>
 <!-- Feature End -->
 
-
 <!-- Deal Start -->
     <div class="container-fluid deal bg-primary my-5 py-5">
         <div class="container py-5">
@@ -155,7 +154,6 @@
     </div>
 <!-- Deal End -->
 
-
 <!-- Product Start -->
     <div class="container-fluid py-5">
         <div class="container">
@@ -164,66 +162,21 @@
                 <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
             </div>
             <div class="row g-4">
+                {% for product in products %}
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                     <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="{% static 'core/img/product-1.png' %}" alt="">
+                        <img class="img-fluid mb-4" src="{{product.image.url}}" alt="">
                         <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
+                            {% for num in product.range %}
+                                <small class="fa fa-star text-primary"></small>
+                            {% endfor %}
+                            <small>({{product.stock}})</small>
                         </div>
-                        <a href="{% url 'products' %}" class="h6 d-inline-block mb-2">Hair Shining Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
+                        <a href="{% url 'products' %}" class="h6 d-inline-block mb-2">{{product.name}}</a>
+                        <h5 class="text-primary mb-3">{{product.price}}</h5>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="{% static 'core/img/product-2.png' %}" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="{% url 'products' %}" class="h6 d-inline-block mb-2">Anti-dandruff Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="{% static 'core/img/product-1.png' %}" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="{% url 'products' %}" class="h6 d-inline-block mb-2">Anti Hair Fall Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
-                    <div class="product-item text-center border h-100 p-4">
-                        <img class="img-fluid mb-4" src="{% static 'core/img/product-2.png' %}" alt="">
-                        <div class="mb-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small>(99)</small>
-                        </div>
-                        <a href="{% url 'products' %}" class="h6 d-inline-block mb-2">Hair Growing Shampoo</a>
-                        <h5 class="text-primary mb-3">$99.99</h5>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -277,10 +230,11 @@
                 <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat, nibh erat tempus risus.</p>
             </div>
             <div class="row g-4">
+                {% for blog in blogs %}
                 <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
                     <div class="blog-item border h-100 p-4">
-                        <img class="img-fluid mb-4" src="{% static 'core/img/blog-1.jpg' %}" alt="">
-                        <a href="" class="h5 lh-base d-inline-block">Foods that are good for your hair growing</a>
+                        <img class="img-fluid mb-4" src="{{blog.image.url}}" alt="">
+                        <a href="" class="h5 lh-base d-inline-block">{{blog.title}}</a>
                         <div class="d-flex text-black-50 mb-2">
                             <div class="pe-3">
                                 <small class="fa fa-eye me-1"></small>
@@ -291,48 +245,13 @@
                                 <small>9999 Comments</small>
                             </div>
                         </div>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</p>
-                        <a href="https://vivalinda.es/blog/" class="btn btn-outline-primary px-3">Read More</a>
+                        <p class="mb-4">{{blog.description}}</p>
+                        <a href="{{blog.url}}" class="btn btn-outline-primary px-3">Read More</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="blog-item border h-100 p-4">
-                        <img class="img-fluid mb-4" src="{% static 'core/img/blog-2.jpg' %}" alt="">
-                        <a href="" class="h5 lh-base d-inline-block">How to take care of hair naturally</a>
-                        <div class="d-flex text-black-50 mb-2">
-                            <div class="pe-3">
-                                <small class="fa fa-eye me-1"></small>
-                                <small>9999 Views</small>
-                            </div>
-                            <div class="pe-3">
-                                <small class="fa fa-comments me-1"></small>
-                                <small>9999 Comments</small>
-                            </div>
-                        </div>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</p>
-                        <a href="https://www.lacasadelpeluquero.com/blog/cuidado-capilar/" class="btn btn-outline-primary px-3">Read More</a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="blog-item border h-100 p-4">
-                        <img class="img-fluid mb-4" src="{% static 'core/img/blog-3.jpg' %}" alt="">
-                        <a href="" class="h5 lh-base d-inline-block">How to use our natural & organic shampoo</a>
-                        <div class="d-flex text-black-50 mb-2">
-                            <div class="pe-3">
-                                <small class="fa fa-eye me-1"></small>
-                                <small>9999 Views</small>
-                            </div>
-                            <div class="pe-3">
-                                <small class="fa fa-comments me-1"></small>
-                                <small>9999 Comments</small>
-                            </div>
-                        </div>
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aliquet, erat non malesuada consequat.</p>
-                        <a href="https://www.brasilybelleza.com/es/blog/" class="btn btn-outline-primary px-3">Read More</a>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-    <!-- Blog End -->
+<!-- Blog End -->
 {% endblock %}
