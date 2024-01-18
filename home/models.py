@@ -21,6 +21,7 @@ class Display_products(models.Model):
     stock = models.IntegerField(verbose_name = "Stock")
     price = models.DecimalField(max_digits = 10, decimal_places = 2, verbose_name = "Precio")
     image = models.ImageField(upload_to = "home_prods", blank=True, null=True, verbose_name = "Imagen")
+    benefit = models.ManyToManyField(Benefits, verbose_name = "Beneficios")
     created = models.DateTimeField(auto_now_add = True, verbose_name = "Fecha de creación")
     updated = models.DateTimeField(auto_now = True, verbose_name = "Fecha de edición")
 

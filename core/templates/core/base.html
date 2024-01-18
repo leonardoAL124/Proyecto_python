@@ -109,11 +109,18 @@
                     <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
                     <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com/?lang=es"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/?locale=es_LA"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-square btn-outline-primary me-1" href="https://ec.linkedin.com/"><i
-                                class="fab fa-linkedin-in"></i></a>
+                        {% if URL_TWITTER != null %}
+                            <a class="btn btn-square btn-outline-primary me-1" href="https://twitter.com/?lang=es"><i class="fab fa-twitter"></i></a>
+                        {% endif %}
+                        {% if URL_FACEBOOK != null %}
+                            <a class="btn btn-square btn-outline-primary me-1" href="https://www.facebook.com/?locale=es_LA"><i class="fab fa-facebook-f"></i></a>
+                        {% endif %}
+                        {% if URL_INSTAGRAM != null %}
+                            <a class="btn btn-square btn-outline-primary me-1" href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                        {% endif %}
+                        {% if URL_LINKEDIN != null %}
+                            <a class="btn btn-square btn-outline-primary me-1" href="https://ec.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
